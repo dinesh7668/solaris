@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SOLARIS — Solar System Explorer</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Share+Tech+Mono&family=Exo+2:wght@200;300;400&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="solar-system.css">
+</head>
+
+<body>
+
+  <div id="cursor"></div>
+  <div id="cursor-ring"></div>
+  <div id="progress-bar"></div>
+  <canvas id="starfield"></canvas>
+
+  <header id="hud-top">
+    <div class="hud-logo">SOL<span>ARIS</span></div>
+    <div id="planet-counter">PLANET 01 / 08</div>
+    <div class="hud-status">
+      <div>SYSTEM: SOLAR</div>
+      <div>STATUS: ACTIVE</div>
+      <div id="hud-time">00:00:00 UTC</div>
+    </div>
+  </header>
+
+  <nav id="side-nav">
+    <div class="nav-dot active" data-section="intro"><span class="nav-label">ORIGIN</span></div>
+    <div class="nav-dot" data-section="mercury"><span class="nav-label">MERCURY</span></div>
+    <div class="nav-dot" data-section="venus"><span class="nav-label">VENUS</span></div>
+    <div class="nav-dot" data-section="earth"><span class="nav-label">EARTH</span></div>
+    <div class="nav-dot" data-section="mars"><span class="nav-label">MARS</span></div>
+    <div class="nav-dot" data-section="jupiter"><span class="nav-label">JUPITER</span></div>
+    <div class="nav-dot" data-section="saturn"><span class="nav-label">SATURN</span></div>
+    <div class="nav-dot" data-section="uranus"><span class="nav-label">URANUS</span></div>
+    <div class="nav-dot" data-section="neptune"><span class="nav-label">NEPTUNE</span></div>
+  </nav>
+
+  <!-- INTRO -->
+  <section id="intro">
+    <div class="scan-line"></div>
+    <div class="intro-eyebrow">NAVIGATING THE COSMOS</div>
+    <h1 class="intro-title">SOLAR<br><span class="accent">SYSTEM</span></h1>
+    <p class="intro-sub">8 planets · 1 star · infinite wonder</p>
+    <div class="scroll-hint">
+      <span>SCROLL TO EXPLORE</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
+
+  <!-- SUN -->
+  <section id="sun-section">
+    <div class="sun-content sun-content-panel">
+      <div class="sun-visual">
+        <div class="corona-ring sun-corona-near"></div>
+        <div class="corona-ring sun-corona-mid"></div>
+        <div class="corona-ring sun-corona-far"></div>
+        <div class="sun-sphere"></div>
+      </div>
+      <div class="sun-kicker">
+        STELLAR OBJECT · TYPE G2V</div>
+      <div class="sun-heading">
+        THE SUN</div>
+      <div class="sun-copy">
+        Our star — a sphere of hot plasma 1.39 million km in diameter, generating energy through nuclear fusion at its
+        core. Every planet orbits around this blazing heart.</div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- MERCURY -->
+  <section class="planet-section" id="mercury" data-index="1">
+    <div class="planet-bg mercury-bg-glow"></div>
+    <div class="scan-line mercury-scan-offset"></div>
+    <div class="corner-bracket tl mercury-corner-top-left"></div>
+    <div class="corner-bracket tr mercury-corner-top-right"></div>
+    <div class="corner-bracket bl mercury-corner-bottom-left"></div>
+    <div class="corner-bracket br mercury-corner-bottom-right"></div>
+
+    <div class="planet-content">
+      <div class="planet-visual">
+        <div class="planet-glow mercury-glow-fill"></div>
+        <div class="orbit-ring mercury-orbit-inner"></div>
+        <div class="orbit-ring mercury-orbit-outer">
+        </div>
+        <div class="planet-sphere mercury-body">
+        </div>
+        <div class="data-tag mercury-tag-heat">TEMP: 430°C</div>
+        <div class="data-tag mercury-tag-density">ρ: 5.43 g/cm³</div>
+      </div>
+
+      <div class="planet-data">
+        <div class="planet-number">PLANET 01 · INNER SYSTEM</div>
+        <div class="planet-name mercury-title-color">MERCURY</div>
+        <div class="planet-latin">Mercurius · ☿</div>
+        <p class="planet-desc mercury-desc-border">The smallest planet and closest to the Sun, Mercury
+          is a world of extremes. With no atmosphere to retain heat, temperatures swing from 430°C in daylight to
+          −180°C at night — the most extreme thermal range in the solar system.</p>
+        <div class="stats-grid">
+          <div class="stat-item mercury-stat-highlight">
+            <div class="stat-label">DISTANCE FROM SUN</div>
+            <div class="stat-value">0.39<span class="stat-unit">AU</span></div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">ORBITAL PERIOD</div>
+            <div class="stat-value">87.9<span class="stat-unit">DAYS</span></div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">DIAMETER</div>
+            <div class="stat-value">4,879<span class="stat-unit">KM</span></div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">MOONS</div>
+            <div class="stat-value">0</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- VENUS -->
+  <section class="planet-section" id="venus" data-index="2">
+    <div class="planet-bg venus-bg-glow"></div>
+    <div class="scan-line venus-scan-offset"></div>
+    <div class="corner-bracket tl venus-corner-top-left"></div>
+    <div class="corner-bracket tr venus-corner-top-right"></div>
+    <div class="corner-bracket bl venus-corner-bottom-left"></div>
+    <div class="corner-bracket br venus-corner-bottom-right"></div>
+
+    <div class="planet-content reverse">
+      <div class="planet-visual">
+        <div class="planet-glow venus-glow-fill"></div>
+        <div class="orbit-ring venus-orbit"></div>
+        <div class="planet-sphere venus-body">
+        </div>
+        <div class="data-tag venus-tag-air">CO₂: 96.5%</div>
+        <div class="data-tag venus-tag-pressure">PRESSURE: 92 ATM</div>
+      </div>
+
+      <div class="planet-data">
+        <div class="planet-number">PLANET 02 · INNER SYSTEM</div>
+        <div class="planet-name venus-title-color">VENUS</div>
+        <div class="planet-latin">Venus · ♀</div>
+        <p class="planet-desc venus-desc-border">The hottest planet in our solar system despite being
+          second from the Sun. Its thick atmosphere of carbon dioxide creates a runaway greenhouse effect, pushing
+          surface temperatures to 465°C — hot enough to melt lead.</p>
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-label">DISTANCE FROM SUN</div>
+            <div class="stat-value">0.72<span class="stat-unit">AU</span></div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">ORBITAL PERIOD</div>
+            <div class="stat-value">224.7<span class="stat-unit">DAYS</span></div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">DIAMETER</div>
+            <div class="stat-value">12,104<span class="stat-unit">KM</span></div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">MOONS</div>
+            <div class="stat-value">0</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- EARTH -->
+  <section class="planet-section" id="earth" data-index="3">
+    <div class="planet-bg earth-bg-glow"></div>
+    <div class="scan-line earth-scan-offset"></div>
+    <div class="corner-bracket tl earth-corner-top-left"></div>
+    <div class="corner-bracket tr earth-corner-top-right"></div>
+    <div class="corner-bracket bl earth-corner-bottom-left"></div>
+    <div class="corner-bracket br earth-corner-bottom-right"></div>
+
+    <div class="planet-content">
+      <div class="planet-visual">
+        <div class="planet-glow earth-glow-fill"></div>
+        <!-- Earth + Moon system: everything centered in a single container -->
+        <div class="earth-system">
+          <!-- Moon orbit path (visual guide) -->
+          <div class="earth-orbit-path">
+          </div>
+          <!-- Moon orbiting via CSS animation -->
+          <div class="earth-moon-orbit">
+            <div class="earth-moon">
+            </div>
+          </div>
+          <!-- Earth sphere -->
+          <div class="planet-sphere earth-body">
+          </div>
+        </div>
+        <div class="data-tag earth-tag-air">N₂: 78.1%</div>
+        <div class="data-tag earth-tag-water">H₂O: LIQUID</div>
+      </div>
+
+      <div class="planet-data">
+        <div class="planet-number">PLANET 03 · HABITABLE ZONE</div>
+        <div class="planet-name earth-title-color">EARTH</div>
+        <div class="planet-latin">Terra · ♁</div>
+        <p class="planet-desc earth-desc-border">Our pale blue dot — the only known world harboring
+          life. Earth's liquid water, protective magnetosphere, and nitrogen-oxygen atmosphere create conditions
+          uniquely suited for the complex chemistry of biology. You are here.</p>
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-label">DISTANCE FROM SUN</div>
+            <div class="stat-value">1.00<span class="stat-unit">AU</span></div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">ORBITAL PERIOD</div>
+            <div class="stat-value">365.25<span class="stat-unit">DAYS</span></div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">DIAMETER</div>
+            <div class="stat-value">12,756<span class="stat-unit">KM</span></div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">MOONS</div>
+            <div class="stat-value">1</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- MARS -->
+  <section class="planet-section" id="mars" data-index="4">
+    <div class="planet-bg mars-bg-glow"></div>
+    <div class="scan-line mars-scan-offset"></div>
+    <div class="corner-bracket tl mars-corner-top-left"></div>
+    <div class="corner-bracket tr mars-corner-top-right"></div>
+    <div class="corner-bracket bl mars-corner-bottom-left"></div>
+    <div class="corner-bracket br mars-corner-bottom-right"></div>
+
+    <div class="planet-content reverse">
+      <div class="planet-visual">
+        <div class="planet-glow mars-glow-fill"></div>
+        <div class="orbit-ring mars-orbit"></div>
+        <div class="planet-sphere mars-body">
+        </div>
+        <div class="data-tag mars-tag-olympus">OLYMPUS MONS: 21KM</div>
+        <div class="data-tag mars-tag-air">CO₂: 95.3%</div>
+      </div>
+
+      <div class="planet-data">
+        <div class="planet-number">PLANET 04 · INNER SYSTEM</div>
+        <div class="planet-name mars-title-color">MARS</div>
+        <div class="planet-latin">Mars · ♂</div>
+        <p class="planet-desc mars-desc-border">The Red Planet — named for its iron oxide surface.
+          Mars hosts the largest volcano in the solar system (Olympus Mons) and the longest canyon (Valles Marineris).
+          Evidence suggests ancient liquid water once flowed here.</p>
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-label">DISTANCE FROM SUN</div>
+            <div class="stat-value">1.52<span class="stat-unit">AU</span></div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">ORBITAL PERIOD</div>
+            <div class="stat-value">686.9<span class="stat-unit">DAYS</span></div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">DIAMETER</div>
+            <div class="stat-value">6,779<span class="stat-unit">KM</span></div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">MOONS</div>
+            <div class="stat-value">2</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- JUPITER -->
+  <section class="planet-section" id="jupiter" data-index="5">
+    <div class="planet-bg jupiter-bg-glow"></div>
+    <div class="scan-line jupiter-scan-offset"></div>
+    <div class="corner-bracket tl jupiter-corner-top-left"></div>
+    <div class="corner-bracket tr jupiter-corner-top-right"></div>
+    <div class="corner-bracket bl jupiter-corner-bottom-left"></div>
+    <div class="corner-bracket br jupiter-corner-bottom-right"></div>
+
+    <div class="planet-content">
+      <div class="planet-visual">
+        <div class="planet-glow jupiter-glow-fill"></div>
+        <!-- Jupiter: all rings and planet in one centered flex container -->
+        <div class="jupiter-system">
+          <!-- Orbit ring 1 -->
+          <div class="jupiter-orbit">
+            <div class="jupiter-orbit-marker">
+            </div>
+          </div>
+          <!-- Jupiter sphere -->
+          <div class="jupiter-body">
+            <!-- Storm bands -->
+            <div class="jupiter-band-top">
+            </div>
+            <div class="jupiter-band-mid">
+            </div>
+            <div class="jupiter-band-bottom">
+            </div>
+            <!-- Great Red Spot -->
+            <div class="jupiter-red-spot">
+            </div>
+          </div>
+        </div>
+        <div class="data-tag jupiter-tag-mass">MASS: 318× EARTH</div>
+        <div class="data-tag jupiter-tag-wind">WINDS: 620 KM/H</div>
+      </div>
+
+      <div class="planet-data">
+        <div class="planet-number">PLANET 05 · OUTER SYSTEM</div>
+        <div class="planet-name jupiter-title-color">JUPITER</div>
+        <div class="planet-latin">Iuppiter · ♃</div>
+        <p class="planet-desc jupiter-desc-border">The king of planets — more massive than all other
+          planets combined. Jupiter's iconic Great Red Spot is a storm that has raged for centuries. Its powerful
+          gravity acts as a cosmic shield, deflecting asteroids from the inner solar system.</p>
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-label">DISTANCE FROM SUN</div>
+            <div class="stat-value">5.20<span class="stat-unit">AU</span></div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">ORBITAL PERIOD</div>
+            <div class="stat-value">11.86<span class="stat-unit">YEARS</span></div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">DIAMETER</div>
+            <div class="stat-value">139,820<span class="stat-unit">KM</span></div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">MOONS</div>
+            <div class="stat-value">95</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- SATURN -->
+  <section class="planet-section" id="saturn" data-index="6">
+    <div class="planet-bg saturn-bg-glow"></div>
+    <div class="scan-line saturn-scan-offset"></div>
+    <div class="corner-bracket tl saturn-corner-top-left"></div>
+    <div class="corner-bracket tr saturn-corner-top-right"></div>
+    <div class="corner-bracket bl saturn-corner-bottom-left"></div>
+    <div class="corner-bracket br saturn-corner-bottom-right"></div>
+
+    <div class="planet-content reverse">
+      <div class="planet-visual">
+        <div class="planet-glow saturn-glow-fill"></div>
+        <div class="saturn-system">
+          <!-- Saturn system drawn with SVG for perfect ring alignment -->
+          <svg viewBox="0 0 360 360" class="saturn-svg-frame">
+            <!-- Back half of rings (behind planet) -->
+            <ellipse cx="180" cy="180" rx="155" ry="28" fill="none" stroke="rgba(240,213,140,0.28)" stroke-width="14" class="saturn-back-ring-reset" />
+            <ellipse cx="180" cy="180" rx="135" ry="24" fill="none" stroke="rgba(240,200,120,0.20)" stroke-width="10" />
+            <ellipse cx="180" cy="180" rx="115" ry="20" fill="none" stroke="rgba(240,220,160,0.15)" stroke-width="7" />
+            <!-- Planet body (circle in SVG center) -->
+            <defs>
+              <radialGradient id="satGrad" cx="38%" cy="35%" r="70%">
+                <stop offset="0%" stop-color="#fff8dc" />
+                <stop offset="25%" stop-color="#f0d58c" />
+                <stop offset="55%" stop-color="#d4aa50" />
+                <stop offset="80%" stop-color="#9a7420" />
+                <stop offset="100%" stop-color="#5a4010" />
+              </radialGradient>
+              <!-- Clip the ring to only show front half (below equator of planet) -->
+              <clipPath id="frontRingClip">
+                <rect x="0" y="180" width="360" height="180" />
+              </clipPath>
+              <clipPath id="backRingClip">
+                <rect x="0" y="0" width="360" height="180" />
+              </clipPath>
+            </defs>
+            <!-- Back ring halves already drawn above, now draw planet on top -->
+            <circle cx="180" cy="180" r="90" fill="url(#satGrad)" class="saturn-body-shadow" />
+            <!-- Front half of rings (in front of planet) -->
+            <ellipse cx="180" cy="180" rx="155" ry="28" fill="none" stroke="rgba(240,213,140,0.32)" stroke-width="14"
+              clip-path="url(#frontRingClip)" />
+            <ellipse cx="180" cy="180" rx="135" ry="24" fill="none" stroke="rgba(240,200,120,0.24)" stroke-width="10"
+              clip-path="url(#frontRingClip)" />
+            <ellipse cx="180" cy="180" rx="115" ry="20" fill="none" stroke="rgba(240,220,160,0.18)" stroke-width="7"
+              clip-path="url(#frontRingClip)" />
+          </svg>
+        </div>
+        <div class="data-tag saturn-tag-rings">RING SPAN: 282,000 KM</div>
+        <div class="data-tag saturn-tag-density">ρ: 0.69 g/cm³</div>
+      </div>
+
+      <div class="planet-data">
+        <div class="planet-number">PLANET 06 · OUTER SYSTEM</div>
+        <div class="planet-name saturn-title-color">SATURN</div>
+        <div class="planet-latin">Saturnus · ♄</div>
+        <p class="planet-desc saturn-desc-border">The jewel of the solar system. Saturn's iconic ring
+          system spans 282,000 km yet is only meters thick — composed of ice and rock fragments. Saturn is so light it
+          would float on water. Its moon Titan has a thick nitrogen atmosphere and liquid methane lakes.</p>
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-label">DISTANCE FROM SUN</div>
+            <div class="stat-value">9.58<span class="stat-unit">AU</span></div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">ORBITAL PERIOD</div>
+            <div class="stat-value">29.46<span class="stat-unit">YEARS</span></div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">DIAMETER</div>
+            <div class="stat-value">116,460<span class="stat-unit">KM</span></div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">MOONS</div>
+            <div class="stat-value">146</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- URANUS -->
+  <section class="planet-section" id="uranus" data-index="7">
+    <div class="planet-bg uranus-bg-glow"></div>
+    <div class="scan-line uranus-scan-offset"></div>
+    <div class="corner-bracket tl uranus-corner-top-left"></div>
+    <div class="corner-bracket tr uranus-corner-top-right"></div>
+    <div class="corner-bracket bl uranus-corner-bottom-left"></div>
+    <div class="corner-bracket br uranus-corner-bottom-right"></div>
+
+    <div class="planet-content">
+      <div class="planet-visual">
+        <div class="planet-glow uranus-glow-fill"></div>
+        <div class="uranus-system">
+          <!-- Uranus rings: near-vertical ellipses (97.77° tilt means rings are almost perpendicular to orbit) -->
+          <svg viewBox="0 0 360 360" class="uranus-svg-frame">
+            <defs>
+              <radialGradient id="uranusGrad" cx="38%" cy="35%" r="70%">
+                <stop offset="0%" stop-color="#b2ebe0" />
+                <stop offset="30%" stop-color="#7ecec4" />
+                <stop offset="60%" stop-color="#4db6ac" />
+                <stop offset="80%" stop-color="#26a69a" />
+                <stop offset="100%" stop-color="#00695c" />
+              </radialGradient>
+              <!-- Clip front halves of rings (right of planet center) -->
+              <clipPath id="uranusFrontClip">
+                <rect x="180" y="0" width="180" height="360" />
+              </clipPath>
+              <clipPath id="uranusBackClip">
+                <rect x="0" y="0" width="180" height="360" />
+              </clipPath>
+            </defs>
+            <!-- Back half of rings (left side, behind planet) -->
+            <ellipse cx="180" cy="180" rx="22" ry="150" fill="none" stroke="rgba(126,206,196,0.25)" stroke-width="12"
+              clip-path="url(#uranusBackClip)" />
+            <ellipse cx="180" cy="180" rx="18" ry="130" fill="none" stroke="rgba(126,206,196,0.18)" stroke-width="8"
+              clip-path="url(#uranusBackClip)" />
+            <ellipse cx="180" cy="180" rx="14" ry="110" fill="none" stroke="rgba(126,206,196,0.12)" stroke-width="5"
+              clip-path="url(#uranusBackClip)" />
+            <!-- Planet body -->
+            <circle cx="180" cy="180" r="80" fill="url(#uranusGrad)" class="uranus-body-shadow" />
+            <!-- Front half of rings (right side, in front of planet) -->
+            <ellipse cx="180" cy="180" rx="22" ry="150" fill="none" stroke="rgba(126,206,196,0.32)" stroke-width="12"
+              clip-path="url(#uranusFrontClip)" />
+            <ellipse cx="180" cy="180" rx="18" ry="130" fill="none" stroke="rgba(126,206,196,0.24)" stroke-width="8"
+              clip-path="url(#uranusFrontClip)" />
+            <ellipse cx="180" cy="180" rx="14" ry="110" fill="none" stroke="rgba(126,206,196,0.16)" stroke-width="5"
+              clip-path="url(#uranusFrontClip)" />
+          </svg>
+        </div>
+        <div class="data-tag uranus-tag-tilt">AXIAL TILT: 97.77°</div>
+        <div class="data-tag uranus-tag-type">CH₄: ICE GIANT</div>
+      </div>
+
+      <div class="planet-data">
+        <div class="planet-number">PLANET 07 · OUTER SYSTEM</div>
+        <div class="planet-name uranus-title-color">URANUS</div>
+        <div class="planet-latin">Uranus · ⛢</div>
+        <p class="planet-desc uranus-desc-border">The tilted ice giant — Uranus rotates on its side
+          with an axial tilt of 97.77°, making its poles receive more sunlight than its equator. Its blue-green hue
+          comes from methane in its atmosphere absorbing red light. It's the coldest planetary atmosphere in the solar
+          system.</p>
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-label">DISTANCE FROM SUN</div>
+            <div class="stat-value">19.22<span class="stat-unit">AU</span></div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">ORBITAL PERIOD</div>
+            <div class="stat-value">84.01<span class="stat-unit">YEARS</span></div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">DIAMETER</div>
+            <div class="stat-value">50,724<span class="stat-unit">KM</span></div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">MOONS</div>
+            <div class="stat-value">28</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- NEPTUNE -->
+  <section class="planet-section" id="neptune" data-index="8">
+    <div class="planet-bg neptune-bg-glow"></div>
+    <div class="scan-line neptune-scan-offset"></div>
+    <div class="corner-bracket tl neptune-corner-top-left"></div>
+    <div class="corner-bracket tr neptune-corner-top-right"></div>
+    <div class="corner-bracket bl neptune-corner-bottom-left"></div>
+    <div class="corner-bracket br neptune-corner-bottom-right"></div>
+
+    <div class="planet-content reverse">
+      <div class="planet-visual">
+        <div class="planet-glow neptune-glow-fill"></div>
+        <div class="orbit-ring neptune-orbit-inner"></div>
+        <div class="orbit-ring neptune-orbit-outer">
+        </div>
+        <div class="planet-sphere neptune-body">
+        </div>
+        <div class="data-tag neptune-tag-wind">WINDS: 2,100 KM/H</div>
+        <div class="data-tag neptune-tag-triton">TRITON: RETROGRADE</div>
+      </div>
+
+      <div class="planet-data">
+        <div class="planet-number">PLANET 08 · OUTER SYSTEM</div>
+        <div class="planet-name neptune-title-color">NEPTUNE</div>
+        <div class="planet-latin">Neptunus · ♆</div>
+        <p class="planet-desc neptune-desc-border">The windiest planet in the solar system — Neptune's
+          storms generate winds exceeding 2,100 km/h, the fastest recorded on any planet. Discovered in 1846 through
+          mathematical prediction before visual confirmation, Neptune has only completed one orbit since its discovery.
+        </p>
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-label">DISTANCE FROM SUN</div>
+            <div class="stat-value">30.05<span class="stat-unit">AU</span></div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">ORBITAL PERIOD</div>
+            <div class="stat-value">164.8<span class="stat-unit">YEARS</span></div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">DIAMETER</div>
+            <div class="stat-value">49,244<span class="stat-unit">KM</span></div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">MOONS</div>
+            <div class="stat-value">16</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="footer">
+    <div class="footer-text">SOLARIS EXPLORER · SOLAR SYSTEM DATA · © 2026</div>
+    <div class="footer-end-note">
+      END OF SYSTEM SCAN</div>
+  </footer>
+
+  <script src="solar-system.js"></script>
+</body>
+
+</html>
+
+
