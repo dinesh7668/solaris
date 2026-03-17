@@ -43,26 +43,6 @@
     drawStars();
     window.addEventListener('resize', () => { resizeCanvas(); createStars(); });
 
-    // Cursor
-    const cursor = document.getElementById('cursor');
-    const ring = document.getElementById('cursor-ring');
-    let mx = 0, my = 0, rx = 0, ry = 0;
-
-    document.addEventListener('mousemove', e => {
-      mx = e.clientX; my = e.clientY;
-      cursor.style.left = mx + 'px';
-      cursor.style.top = my + 'px';
-    });
-
-    function animateRing() {
-      rx += (mx - rx) * 0.12;
-      ry += (my - ry) * 0.12;
-      ring.style.left = rx + 'px';
-      ring.style.top = ry + 'px';
-      requestAnimationFrame(animateRing);
-    }
-    animateRing();
-
     // HUD time
     function updateTime() {
       const now = new Date();
@@ -138,15 +118,7 @@
     // Planet hover particles
     document.querySelectorAll('.planet-sphere').forEach(sphere => {
       sphere.addEventListener('mouseenter', () => {
-        cursor.style.width = '20px';
-        cursor.style.height = '20px';
-        ring.style.borderColor = 'rgba(255,255,255,0.6)';
         spawnParticles(sphere);
-      });
-      sphere.addEventListener('mouseleave', () => {
-        cursor.style.width = '12px';
-        cursor.style.height = '12px';
-        ring.style.borderColor = 'rgba(255,255,255,0.4)';
       });
     });
 
